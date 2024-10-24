@@ -1,0 +1,113 @@
+CREATE DATABASE KINO4tig1;
+
+CREATE TABLE `FILMY`(
+`ID` int PRIMARY KEY AUTO_INCREMENT,
+`Tytuł` varchar(40) NOT null,
+`Reżyser` varchar(20) not null,
+`Czas_trwania(min)` int not null;
+);
+
+
+CREATE TABLE `Rodzaj_filmu`(
+ `ID` int PRIMARY KEY AUTO_INCREMENT,
+ `Nazwa` varchar(30) NOT null 
+ );
+ 
+ 
+ CREATE TABLE `Filmy_Rodzaj`(
+`ID` int PRIMARY KEY AUTO_INCREMENT,
+`Filmy_ID` int NOT null,
+`Rodzaj_ID` int NOT null, CONSTRAINT `Filmy_FK` FOREIGN KEY (`Filmy_ID`) REFERENCES `FILMY`(`ID`),
+CONSTRAINT `Rodzaj_FK` FOREIGN KEY (`Rodzaj_ID`) REFERENCES `Rodzaj_filmu`(`ID`) 
+  
+  );
+  
+  
+ CREATE TABLE `Klienci`(
+`ID` int PRIMARY key AUTO_INCREMENT,
+`imie` varchar(20) not null,
+`nazwisko` varchar(30) not null,
+`mail` varchar(30) not null
+
+);
+
+
+CREATE TABLE `Sprzedawcy`(
+`ID` int PRIMARY key AUTO_INCREMENT,
+`imie` varchar(20) not null,
+`nazwisko` varchar(30) not null
+);
+
+
+CREATE TABLE `Sale`(
+`ID` int PRIMARY KEY AUTO_INCREMENT,
+`ilość_miejsc` int NOT null
+
+);
+
+
+
+
+
+CREATE TABLE `Seanse`(
+`ID` int PRIMARY KEY AUTO_INCREMENT,
+`Termin` datetime not null,
+`Sala_ID` int not null,
+`Film_ID` int not NULL,
+`Liczba_wolnych_miejsc` int not null,
+CONSTRAINT `Sala_FK` FOREIGN KEY(`Sala_ID`) REFERENCES `Sale`(`ID`),
+CONSTRAINT `Film_FK2` FOREIGN KEY (`Film_ID`) REFERENCES `Filmy`(`ID`) 
+);
+
+
+CREATE TABLE `Bilety`(
+`ID` int PRIMARY KEY AUTO_INCREMENT,
+`Seans_ID` int not null,
+`Sprzedawca_ID` int not null,
+`Klient_ID` int not null,
+`cena` int not null,
+CONSTRAINT `Seans_FK` FOREIGN KEY (`Seans_ID`)
+    REFERENCES `Seanse`(`ID`),
+CONSTRAINT `Sprzedawca_FK` FOREIGN KEY (`Sprzedawca_ID`)
+    REFERENCES `Sprzedawcy`(`ID`),
+CONSTRAINT `Klient_FK` FOREIGN KEY (`Klient_ID`)
+    REFERENCES `Klienci`(`ID`)
+
+
+);
+
+
+dodawanie danych do tabeli:
+
+INSERT INTO `Filmy` VALUES 
+(1,"Auta","Kamil Ślimak",90),
+(2,"Iron Man","Piotr Nowak",120),
+(3,"Ostatni Taniec","Adam Polik",100)
+
+
+INSERT INTO `Klienci` VALUES
+(1,"Szymon","Piotrowski","szymonp@gmail.com"),
+(2,"Tadeusz","Marcinkowski","tadekm@wp.pl"),
+(3,"Julia","Wronka","juliag@onet.pl")
+
+INSERT INTO `Rodzaj_filmu` VALUES
+(1,"animacja"),
+(2,"scifi"),
+(3,"horror")
+
+
+INSERT INTO `Sale` VALUES 
+(1,30),
+(2,35),
+(3,40)
+
+INSERT INTO `Seanse` VALUES 
+(null,"2024-11-11 13:30:00",1,1,"30"),
+(null,"2024-10-13 12:00:00",2,2,"35"),
+(null,"2024-9-10 18:30:00",3,3,"40")
+INSERT INTO `Sprzedawcy` VALUES 
+(1,"Nikodem","Kononowicz"),
+(2,"Piotr","Kamijczyk"),
+(3,"Sebastian","Bach")
+
+
