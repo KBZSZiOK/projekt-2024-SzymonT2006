@@ -110,4 +110,20 @@ INSERT INTO `Sprzedawcy` VALUES
 (2,"Piotr","Kamijczyk"),
 (3,"Sebastian","Bach")
 
+INSERT INTO `Bilety`VALUES 
+(null,1,1,1,20),
+(null,2,2,2,25),
+(null,3,3,3,22)
+
+
+INSERT INTO `Filmy_Rodzaj` VALUES 
+(null,1,1),
+(null,2,2),
+(null,3,3)
+
+Zapytania:
+SELECT Filmy.Tytuł,Filmy.ID FROM Filmy GROUP BY Tytuł ORDER BY Filmy.ID DESC; 
+
+SELECT Bilety.ID, Seanse.ID AS Seans , Sprzedawcy.imie AS sprzedawca,Klienci.imie as klient FROM (Bilety INNER JOIN Seanse ON Bilety.Seans_ID = Seanse.ID)INNER JOIN Sprzedawcy ON Bilety.Sprzedawca_ID = Sprzedawcy.ID INNER JOIN Klienci ON Bilety.Klient_ID = Klienci.ID; 
+
 
