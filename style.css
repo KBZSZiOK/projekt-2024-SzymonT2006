@@ -38,7 +38,8 @@ section{
 width: 100%;
 height: 81%;
 background-color: rgb(145, 133, 33);
-
+overflow-x: hidden;
+overflow-y: hidden;
 }
 
 
@@ -63,10 +64,13 @@ img{
     height: 100%;
     border: 0;
 }
-h2{
+#tekst1{
     position:absolute ;
     top: 50px;
     left: 40%;
     text-align: center;
     
+}
+#tekst2{
+position: relative;
 }
