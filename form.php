@@ -8,7 +8,7 @@
 <body>
     <h3 style="text-align:center">Dodawanie danych do tabeli</h3> <br>
 
-<form style="text-align:center" method="Post">
+<form style="text-align:center;" method="Post">
 tytuł: <input type="text" name="tytul" required><br>
 reżyser: <input type="text" name="rezyser" required><br>
 czas trwania: <input type="number" name="czas" required><br>

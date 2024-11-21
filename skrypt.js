@@ -16,7 +16,7 @@ tekst.innerHTML = tekst2[i]
 setInterval(test,2000);
 
 function animation(){
-position += 5;
+position += 3;
 
 
 if(position > screen.width){
